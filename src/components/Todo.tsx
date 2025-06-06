@@ -1,15 +1,16 @@
 import TodoForm from "./TodoForm.tsx";
 import {useReducer} from "react";
 import TodoList from "./TodoList.tsx";
+import type  {TodoProps, ActionProps} from "../types.ts";
 
-type TodoProps = {
-    id: number;
-    text: string;
-}
-
-type ActionProps =
-    | {type: "ADD_TODO"; payload: string}
-    | {type: "DELETE_TODO"; payload: number};
+// type TodoProps = {
+//     id: number;
+//     text: string;
+// }
+//
+// type ActionProps =
+//     | {type: "ADD_TODO"; payload: string}
+//     | {type: "DELETE_TODO"; payload: number};
 
 
 const todoReducer = (state: TodoProps[], action: ActionProps): TodoProps[]  => {

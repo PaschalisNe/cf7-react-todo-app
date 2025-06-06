@@ -1,13 +1,14 @@
 import {useState} from "react";
+import type {TodoFormProps} from "../types.ts";
 
-type Action =
-    | {type: "ADD_TODO"; payload: string}
-    | {type: "DELETE_TODO"; payload: number}
-
-
-type TodoFormProps = {
-    dispatch: React.Dispatch<Action>
-}
+// // type Action =
+// //     | {type: "ADD_TODO"; payload: string}
+// //     | {type: "DELETE_TODO"; payload: number}
+// //
+// //
+// // type TodoFormProps = {
+// //     dispatch: React.Dispatch<Action>
+// }
 
 const TodoForm = ({dispatch}: TodoFormProps) => {
 
