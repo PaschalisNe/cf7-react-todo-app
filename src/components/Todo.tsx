@@ -1,5 +1,5 @@
 import TodoForm from "./TodoForm.tsx";
-import {useReducer} from "react";
+import { useReducer} from "react";
 import TodoList from "./TodoList.tsx";
 import type  {TodoProps, ActionProps} from "../types.ts";
 
@@ -12,22 +12,37 @@ import type  {TodoProps, ActionProps} from "../types.ts";
 //     | {type: "ADD_TODO"; payload: string}
 //     | {type: "DELETE_TODO"; payload: number};
 
-
 const todoReducer = (state: TodoProps[], action: ActionProps): TodoProps[]  => {
     switch (action.type) {
-        case "ADD_TODO": {
-            const newTodo: TodoProps = {
-                id: Date.now(),
-                text: action.payload,
-            }
-            return [...state, newTodo]
-        }
 
-            case "DELETE_TODO":
+        // case "ADD_TODO": {
+        //     const newTodo: TodoProps = {
+        //         id: Date.now(),
+        //         text: action.payload,
+        //     }
+        //     return [...state, newTodo]
+        // }
+// Με αλλο τροπο το αποπανω
+        case "ADD_TODO":
+            return [
+                ...state,
+                {
+                    id: Date.now(),
+                    text: action.payload,
+                }
+            ]
+
+        case "DELETE_TODO":
                 return state.filter(todo => todo.id !== action.payload)
 
+            case "EDIT_TODO":
+                return state.map( todo =>
+                    todo.id === action.payload.id
+                    ? {...todo, text: action.payload.newText}
+                        : todo
+                )
 
-                default: return  state
+        default: return  state
 }
 }
 
