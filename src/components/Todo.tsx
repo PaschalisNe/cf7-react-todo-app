@@ -29,6 +29,7 @@ const todoReducer = (state: TodoProps[], action: ActionProps): TodoProps[]  => {
                 {
                     id: Date.now(),
                     text: action.payload,
+                    completed: false,
                 }
             ]
 
@@ -41,6 +42,13 @@ const todoReducer = (state: TodoProps[], action: ActionProps): TodoProps[]  => {
                     ? {...todo, text: action.payload.newText}
                         : todo
                 )
+
+        case "COMPLETE_TODO":
+            return state.map(todo =>
+                todo.id === action.payload
+                ? {...todo, completed: !todo.completed}
+                : todo
+            )
 
         default: return  state
 }
