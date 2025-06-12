@@ -9,6 +9,7 @@ export type ActionProps =
     | {type: "DELETE_TODO"; payload: number}
     | {type: "EDIT_TODO"; payload: {id: number ; newText: string} }
     | {type: "COMPLETE_TODO"; payload: number}
+    | {type: "CLEAR_ALL"}
 
 export type TodoFormProps = {
     dispatch: React.Dispatch<ActionProps>
